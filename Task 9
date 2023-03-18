@@ -1,0 +1,200 @@
+{
+	"id": "6a6e63c0-8d82-410b-89d1-456c9f6357cd",
+	"name": "API Collections",
+	"timestamp": "2023-03-18T13:31:19.797Z",
+	"collection_id": "26288997-ddcb7c83-07a8-4400-92c8-e24caa964d4e",
+	"folder_id": 0,
+	"environment_id": "26288997-dc6e2553-f292-4a93-ab8d-5b0e31bb8d5e",
+	"totalPass": 13,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-03-18T13:30:58.110Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "1b459cae-ca17-443b-8701-6f0b38a6e93e",
+			"name": "Manual Test 200/OK",
+			"url": "https://petstore.swagger.io/v2/swagger.json",
+			"time": 15081,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code should be 200": true,
+				"Status code name should be OK string": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should be OK string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15081
+			],
+			"allTests": [
+				{
+					"Status code should be 200": true,
+					"Status code name should be OK string": true
+				}
+			]
+		},
+		{
+			"id": "265b2264-efb4-4a16-9ca5-e1b55ed7918a",
+			"name": "Manual Test Body response",
+			"url": "https://petstore.swagger.io/v2/swagger.json",
+			"time": 2791,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code should be 200": true,
+				"Status code name should be OK string": true,
+				"confirm that host is present": true,
+				"confirm that jsonData tag name is present": true,
+				"verify that jsonData displays the url": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should be OK string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"confirm that host is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"confirm that jsonData tag name is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"verify that jsonData displays the url": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2791
+			],
+			"allTests": [
+				{
+					"Status code should be 200": true,
+					"Status code name should be OK string": true,
+					"confirm that host is present": true,
+					"confirm that jsonData tag name is present": true,
+					"verify that jsonData displays the url": true
+				}
+			]
+		},
+		{
+			"id": "fb57cb5d-85b9-4b6f-a549-5ef1afd66667",
+			"name": "Manual Test Environment",
+			"url": "https://petstore.swagger.io/v2/swagger.json",
+			"time": 1947,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code should be 200": true,
+				"Status code name should be OK string": true,
+				"confirm that host is present": true,
+				"confirm that jsonData tag name is present": true,
+				"verify that jsonData displays the url": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should be OK string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"confirm that host is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"confirm that jsonData tag name is present": {
+					"pass": 1,
+					"fail": 0
+				},
+				"verify that jsonData displays the url": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1947
+			],
+			"allTests": [
+				{
+					"Status code should be 200": true,
+					"Status code name should be OK string": true,
+					"confirm that host is present": true,
+					"confirm that jsonData tag name is present": true,
+					"verify that jsonData displays the url": true
+				}
+			]
+		},
+		{
+			"id": "745e459d-c6ab-4623-88b4-da870820a68a",
+			"name": "https://petstore.swagger.io/v2/swagger.json?=",
+			"url": "https://petstore.swagger.io/v2/swagger.json?=",
+			"time": 1206,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1206
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 21025,
+	"collection": {
+		"requests": [
+			{
+				"id": "1b459cae-ca17-443b-8701-6f0b38a6e93e",
+				"method": "GET"
+			},
+			{
+				"id": "265b2264-efb4-4a16-9ca5-e1b55ed7918a",
+				"method": "GET"
+			},
+			{
+				"id": "fb57cb5d-85b9-4b6f-a549-5ef1afd66667",
+				"method": "GET"
+			},
+			{
+				"id": "745e459d-c6ab-4623-88b4-da870820a68a",
+				"method": "GET"
+			}
+		]
+	}
+}
