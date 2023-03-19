@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "ddcb7c83-07a8-4400-92c8-e24caa964d4e",
+		"name": "API Collections",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26288997"
+	},
+	"item": [
+		{
+			"name": "Get request",
+			"item": [
+				{
+					"name": "Manual Test 200/OK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code should be 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name should be OK string\", function () {\r",
+									"    pm.response.to.have.status (\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"variable_key\", \"variable_value\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl6}}/v2/swagger.json",
+							"host": [
+								"{{BaseUrl6}}"
+							],
+							"path": [
+								"v2",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Manual Test Body response",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code should be 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name should be OK string\", function () {\r",
+									"    pm.response.to.have.status (\"OK\");\r",
+									"});\r",
+									"\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(jsonData)\r",
+									"    console.log(jsonData.host)\r",
+									"    console.log(jsonData.tags[1].name)\r",
+									"    console.log(jsonData.externalDocs.url)\r",
+									"    \r",
+									"\r",
+									"\r",
+									"pm.test(\"confirm that host is present\", function () {\r",
+									"    pm.expect(jsonData.host).to.eql(\"petstore.swagger.io\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"confirm that jsonData tag name is present\", function () {\r",
+									"    pm.expect(jsonData.tags[1].name).to.eql(\"store\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"verify that jsonData displays the url\", function () {\r",
+									"    pm.expect(jsonData.externalDocs.url).to.eql(\"http://swagger.io\");\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"confirm that host is present\", function () {\r",
+									"//     pm.response.to.have.body(\"petstore.swagger.io\");\r",
+									"// });\r",
+									"\r",
+									"\r",
+									" \r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl7}}/v2/swagger.json",
+							"host": [
+								"{{BaseUrl7}}"
+							],
+							"path": [
+								"v2",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Manual Test Environment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code should be 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name should be OK string\", function () {\r",
+									"    pm.response.to.have.status (\"OK\");\r",
+									"});\r",
+									"\r",
+									"    var jsonData = pm.response.json();\r",
+									"    console.log(jsonData)\r",
+									"    console.log(jsonData.host)\r",
+									"    console.log(jsonData.tags[1].name)\r",
+									"    console.log(jsonData.externalDocs.url)\r",
+									"\r",
+									"\r",
+									"pm.test(\"confirm that host is present\", function () {\r",
+									"    pm.expect(jsonData.host).to.eql(\"petstore.swagger.io\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"confirm that jsonData tag name is present\", function () {\r",
+									"    pm.expect(jsonData.tags[1].name).to.eql(\"store\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"verify that jsonData displays the url\", function () {\r",
+									"    pm.expect(jsonData.externalDocs.url).to.eql(\"http://swagger.io\");\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"entityswagger\", \"2.0\");\r",
+									"\r",
+									"pm.environment.set(\"entityversion\", \"1.0.6\");\r",
+									"\r",
+									"pm.environment.set(\"entitydescription\", \"This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.\");\r",
+									" \r",
+									"pm.environment.set(\"entitytitle\", \"Swagger Petstore\");\r",
+									"\r",
+									"pm.environment.set(\"entityname\", \"Apache 2.0\");\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// const name  = pm.response.json();\r",
+									"\r",
+									"// console.log(name.tags[1].name)\r",
+									"// pm.environment.set(\"entityName\", jsonData.tags[1].name);\r",
+									"\r",
+									"// pm.environment.set"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/v2/swagger.json",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"v2",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									" var jsonData = pm.response.json();\r",
+									"\r",
+									" console.log(jsonData.name)\r",
+									" console.log(jsonData)\r",
+									" console.log(jsonData.requests[10].url)\r",
+									" console.log(jsonData.order[0])\r",
+									" console.log(jsonData.description)\r",
+									"\r",
+									"\r",
+									"pm.test(\"confirm that name is present\", function () {\r",
+									"    pm.expect(jsonData.name).to.eql(\"MyTutorCollection\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"confirm that decription is present\", function () {\r",
+									"    pm.expect(jsonData.description).to.eql(\"For collection of my own examples during tutorial training\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"check that order is confirmed\", function () {\r",
+									"    pm.expect(jsonData.order[0]).to.eql(\"acd9e54c-f8ff-49ce-92c5-bd4ca1d3ca36\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"confirm that request is received\", function () {\r",
+									"    pm.expect(jsonData.requests[10].url).to.eql(\"example.com \");\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.getpostman.com/collections/15036f85a35d875ecfdf",
+							"protocol": "https",
+							"host": [
+								"www",
+								"getpostman",
+								"com"
+							],
+							"path": [
+								"collections",
+								"15036f85a35d875ecfdf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "https://petstore.swagger.io/v2/swagger.json?=",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/swagger.json?=",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"swagger.json"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
