@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>konga.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+konga.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">org.openqa.selenium.By</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.openqa.selenium.WebDriver</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.openqa.selenium.chrome.ChromeDriver</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.openqa.selenium.chrome.ChromeOptions</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.testng.annotations.BeforeTest</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.testng.annotations.Test</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">konga {</span>
+
+    <span class="s2">// 1. Import the selenium WebDriver</span>
+    <span class="s0">private </span><span class="s1">WebDriver driver</span><span class="s0">;</span>
+
+    <span class="s1">@BeforeTest</span>
+    <span class="s0">public void </span><span class="s1">SetUp() </span><span class="s0">throws </span><span class="s1">InterruptedException {</span>
+
+        <span class="s2">// 2. Locate Chrome Driver</span>
+        <span class="s1">System.setProperty(</span><span class="s3">&quot;webdriver.chrome.driver&quot;</span><span class="s0">, </span><span class="s3">&quot;Resources/chromedriver.exe&quot;</span><span class="s1">)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Test(priority = </span><span class="s4">0</span><span class="s1">)</span>
+    <span class="s0">private void </span><span class="s1">UrlTest() </span><span class="s0">throws </span><span class="s1">InterruptedException {</span>
+
+        <span class="s1">ChromeOptions options = </span><span class="s0">new </span><span class="s1">ChromeOptions()</span><span class="s0">;</span>
+        <span class="s1">options.addArguments(</span><span class="s3">&quot;--remote-allow-origins=*&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s2">// 3. Open the Chrome Browser</span>
+        <span class="s1">driver = </span><span class="s0">new </span><span class="s1">ChromeDriver()</span><span class="s0">;</span>
+
+        <span class="s2">// 4. Visit the URL https://www.konga.com/</span>
+        <span class="s1">driver.get(</span><span class="s3">&quot;https://www.konga.com/&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s2">//TEST CASE ONE: Verify that the Url leads to the Konga site</span>
+        <span class="s0">if </span><span class="s1">(driver.getCurrentUrl().contains(</span><span class="s3">&quot;https://www.konga.com&quot;</span><span class="s1">))</span>
+            <span class="s2">//Pass</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;Url leads to the Konga webpage: TEST CASE PASSED&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">else</span>
+            <span class="s2">//Fail</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;Url does not lead to the Konga webpage: TEST CASE FAILED&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s2">// 5. Maximize the browser</span>
+        <span class="s1">driver.manage().window().maximize()</span><span class="s0">;</span>
+
+        <span class="s1">Thread.sleep(</span><span class="s4">3000</span><span class="s1">)</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+
+    <span class="s1">@Test (priority = </span><span class="s4">1</span><span class="s1">)</span>
+    <span class="s0">private void </span><span class="s1">LoginPageTest() </span><span class="s0">throws </span><span class="s1">InterruptedException {</span>
+        <span class="s2">// 6. Click the Login/Signup button to signin to Konga</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">nav-bar-fix</span><span class="s0">\&quot;</span><span class="s3">]/div[1]/div/div/div[4]/a&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+
+        <span class="s1">Thread.sleep(</span><span class="s4">5000</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s2">//TEST CASE TWO: Verify that the Login/Signup button leads to the Login page</span>
+        <span class="s1">String expectedXpath = </span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">app-content-wrapper</span><span class="s0">\&quot;</span><span class="s3">]/div[4]/section/section/aside/div[1]/div/h5&quot;</span><span class="s0">;</span>
+        <span class="s1">String actualXpath = String.valueOf(driver.findElement(By.xpath(</span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">app-content-wrapper</span><span class="s0">\&quot;</span><span class="s3">]/div[4]/section/section/aside/div[1]/div/h5&quot;</span><span class="s1">)))</span><span class="s0">;</span>
+        <span class="s0">if </span><span class="s1">(actualXpath.contains(expectedXpath))</span>
+            <span class="s2">//Pass</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;Login button leads to the Login page: TEST CASE PASSED&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">else</span>
+            <span class="s2">//Fail</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;Login button leads to a wrong page: TEST CASE FAILED&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+
+    <span class="s1">@Test (priority = </span><span class="s4">2</span><span class="s1">)</span>
+    <span class="s0">private void </span><span class="s1">SignUpTest() </span><span class="s0">throws </span><span class="s1">InterruptedException {</span>
+        <span class="s2">// 7. Input valid email address</span>
+        <span class="s1">driver.findElement(By.id(</span><span class="s3">&quot;username&quot;</span><span class="s1">)).sendKeys(</span><span class="s3">&quot;loladetestify@gmail.com&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s2">// 8. Input valid password</span>
+        <span class="s1">driver.findElement(By.id(</span><span class="s3">&quot;password&quot;</span><span class="s1">)).sendKeys(</span><span class="s3">&quot;LollipopTestify15&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s2">// 9. Click on the Login button to login</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">app-content-wrapper</span><span class="s0">\&quot;</span><span class="s3">]/div[4]/section/section/aside/div[2]/div/form/div[3]/button&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+
+        <span class="s1">Thread.sleep(</span><span class="s4">5000</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s2">//TEST CASE THREE: Verify that user can Login successfully with a valid email and password____________________</span>
+        <span class="s1">String expectedProfile = </span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">nav-bar-fix</span><span class="s0">\&quot;</span><span class="s3">]/div[1]/div/div/div[4]/div/a/span&quot;</span><span class="s0">;</span>
+        <span class="s1">String actualProfile = String.valueOf(driver.findElement(By.xpath(</span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">nav-bar-fix</span><span class="s0">\&quot;</span><span class="s3">]/div[1]/div/div/div[4]/div/a/span&quot;</span><span class="s1">)))</span><span class="s0">;</span>
+        <span class="s0">if </span><span class="s1">(actualProfile.contains(expectedProfile))</span>
+            <span class="s2">//Pass</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;User can login successfully with valid email and password: TEST CASE PASSED&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">else</span>
+            <span class="s2">//Fail</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;User cannot login successfully with valid email and password: TEST CASE FAILED&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+
+
+<span class="s1">}</span>
+
+</pre>
+</body>
+</html>
